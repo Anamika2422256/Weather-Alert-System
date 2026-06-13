@@ -8,8 +8,6 @@ CITY = "Kochi"
 
 EMAIL = "your_email@gmail.com"
 APP_PASSWORD = "your_app_password"
-receiver = input("Enter receiver email: ")
-reciever=os.environ.get("Email_To",EMAIL)
 url = f"https://api.openweathermap.org/data/2.5/weather?q={CITY}&appid={API_KEY}&units=metric"
 
 response = requests.get(url)
@@ -31,7 +29,7 @@ if data.get("cod") == 200:
 
         msg["Subject"] = "Weather Alert"
         msg["From"] = EMAIL
-        msg["To"] = reciever
+        msg["To"] = EMAIL
 
         msg.set_content(
             f"Weather Alert!\n\n"
