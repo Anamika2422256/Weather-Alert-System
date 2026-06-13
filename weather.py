@@ -5,10 +5,10 @@ import os
 
 API_KEY = "your_openweathermap_api_key"
 CITY = "Kochi"
-
 EMAIL = "your_email@gmail.com"
 APP_PASSWORD = "your_app_password"
- receiver = os.environ.get("RECEIVER_EMAIL")
+
+receiver = os.environ.get("RECEIVER_EMAIL")
 url = f"https://api.openweathermap.org/data/2.5/weather?q={CITY}&appid={API_KEY}&units=metric"
 
 response = requests.get(url)
