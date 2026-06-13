@@ -26,26 +26,25 @@ if data.get("cod") == 200:
 
     if temperature > 35 or condition.lower() == "rain":
 
-        msg = EmailMessage()
+    msg = EmailMessage()
 
-        msg["Subject"] = "Weather Alert"
-        msg["From"] = EMAIL
-     msg["To"] = receiver
+    msg["Subject"] = "Weather Alert"
+    msg["From"] = EMAIL
+    msg["To"] = receiver
 
-        msg.set_content(
-            f"Weather Alert!\n\n"
-            f"Temperature: {temperature}°C\n"
-            f"Condition: {condition}"
-        )
+    msg.set_content(
+        f"Weather Alert!\n\n"
+        f"Temperature: {temperature}°C\n"
+        f"Condition: {condition}"
+    )
 
-        with smtplib.SMTP_SSL("smtp.gmail.com", 465) as smtp:
-            smtp.login(EMAIL, APP_PASSWORD)
-            smtp.send_message(msg)
+      with smtplib.SMTP_SSL("smtp.gmail.com", 465) as smtp:
+        smtp.login(EMAIL, APP_PASSWORD)
+        smtp.send_message(msg)
 
         print("Weather alert email sent!")
 
     else:
-        print("No alert needed.")
-
+          print("No alert needed.")
 else:
     print("Weather API error:", data)
